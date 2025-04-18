@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Form</title>
+<style>
+img{
+	border-radius:50%;
+	position:absolute;
+	margin-left:100px;
+	margin-top:-40px;
+}
+#button:hover{
+	background-color:greenyellow;
+	color:black;
+}
+h3{
+text-align: right;
+text-decoration: underline;
+}
+body{
+	background-image:url(bg2.jpg);
+	background-repeat: no-repeat;
+ 	background-attachment: fixed;
+	background-size: 100%;
+}
+</style>
+
+
+
+  <script>
+    function validateLogin(event) {
+      event.preventDefault(); // Prevent form from submitting by default
+
+      // Hardcoded credentials
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+
+      if (username === "admin" && password === "1234") {
+        // Redirect to next page if login is successful
+        window.location.href = "home.html";
+      } else {
+        alert("Invalid username or password");
+      }
+    }
+  </script>
+h1,h3{
+text-color: white;
+}
+<header style="background-color: red;">
+<h1><center>ATTENDANCE</center></h1>
+<h3>WELCOME USER</h3>
+</header>
+</head>
+<body>
+
+  <center><h2>Login Form</h2></center>
+
+ <center><form onsubmit="validateLogin(event)">
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username" required><br><br>
+
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password" required><br><br>
+
+    <input type="submit" value="Login">
+  </form></center>
+
+</body>
+</html>

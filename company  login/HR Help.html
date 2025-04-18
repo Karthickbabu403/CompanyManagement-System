@@ -1,0 +1,81 @@
+<!DOCTYPE>
+<html>
+<head>
+<style>
+h3{
+text-align: right;
+text-decoration: underline;
+}
+*{
+padding:0;
+margin:0;
+}
+ul{
+	list-style:none;
+}
+.navigation{
+	background:white;
+	position: center;
+	height:25px;
+	width: 100%;
+	padding:20px;
+}
+ul li{
+	font-size: 20px;
+	float: left;
+	border:1px blue;
+	padding:10px 20px;
+}
+table{
+border-collapse: collapse;
+width: 20%;
+}
+</style>
+<header style="background-color:bisque;">
+<h1><center>MANAGEMENT SYSTEM</center></h1>
+<h3>WELCOME USER</h3>
+</header>
+</head>
+<body>
+	<div class="navigation">
+	<ul>
+		<li>Profile</li>
+		<li><a href="policy.html">Policy</a></li>
+		<li><a href="Attendance.html">Attendance Info</a></li>
+		<li><a href="Self.html">Self Service</a></li>
+		<li><a href="HR Help.html">Digital HR Help Desk</a></li>
+		<li><a href="Home.html">Back To Home</a></li>
+	</ul>
+</div>
+<br>
+<h1>Digital HR Help Desk Request</h1><br>
+ <fieldset><br>
+<legend>Personalia:</legend>
+<form>
+<lable>Request Type*</lable>
+<select>
+<option>Requesting time off </option>
+<option>Benefits inquiries </option>
+<option>Payroll issues </option>
+<option>Questions about company policies</option>
+</select>
+<input type="submit">
+</form><br><br>
+<form>
+<lable>Subject*</lable>
+  <textarea style="width:700px; height:25px;"></textarea>
+  <br>
+</form>
+<form>
+<lable>Content*</lable>
+  <textarea style="width:700px; height:100px;"></textarea>
+  <br>
+</form><br>
+<form>
+  <label>Mail Attachement*</label>
+  <input type="file">
+</form><br><br>
+<center><button>Submit</button><button>Reset</button></center><br>
+ </fieldset>
+</body>
+</html>

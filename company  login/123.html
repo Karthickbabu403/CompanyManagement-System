@@ -1,0 +1,159 @@
+<!DOCTYPE>
+<html>
+<head>
+ <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<style>
+
+ #calendar {
+            max-width: 450px;
+            margin: 10px auto;
+        }
+        .fc-event {
+            cursor: pointer;
+        }
+
+h3{
+text-align: right;
+text-decoration: underline;
+}
+*{
+padding:0;
+margin:0;
+}
+ul{
+	list-style:none;
+}
+.navigation{
+	background:white;
+	position: center;
+	height:25px;
+	width: 100%;
+	padding:20px;
+}
+ul li{
+	font-size: 20px;
+	float: left;
+	border:1px blue;
+	padding:10px 20px;
+}
+table{
+border-collapse: collapse;
+width: 20%;
+}
+</style>
+<header style="background-color:bisque;">
+<h1><center>ATTENDANCE</center></h1>
+<h3>WELCOME USER</h3>
+</header>
+</head>
+<body>
+
+	<div class="navigation">
+	<ul>
+		<li>Profile</li>
+		<li><a href="policy.html">Policy</a></li>
+		<li><a href="Attendance.html">Attendance Info</a></li>
+		<li><a href="Self.html">Self Service</a></li>
+		<li><a href="HR Help.html">Digital HR Help Desk</a></li>
+		<li><a href="Home.html">Back To Home</a></li>
+	</ul><br><br>
+
+<table>
+<table border="thickness">
+<th>
+<h1>ATTENDANCE DETAILS</h1>
+</th><br>
+<tr>
+<h2>Employee</h2>
+</tr>
+</table><br>
+<table>
+<table border="thickness">
+<tr>
+<th>Legend</center></th>
+<th>Description</center></th>
+<th>Days</center></th>
+</tr>
+<tr>
+<td><center>-</center></td>
+<td><center>Hrs-OT</center></td>
+<td><center>817</center></td>
+</tr>
+<tr>
+<td><center>-</center></td>
+<td><center>Hrs-Perm.</center></td>
+<td><center>-</center></td>
+</tr>
+<tr>
+<td><center>Red</center></td>
+<td><center>Absent</center></td>
+<td><center>4</center></td>
+</tr>
+<tr>
+<td><center>orange</center></td>
+<td><center>Casual Leave</center></td>
+<td><center>-</center></td>
+</tr>
+<tr>
+<td><center>blue</center></td>
+<td><center>OnDuty</center></td>
+<td><center>-</center></td>
+</tr>
+<tr>
+<td><center>purple</center></td>
+<td><center>Holiday</center></td>
+<td><center>-</center></td>
+</tr>
+<tr>
+<td><center>gray</center></td>
+<td><center>In Valid Swipe</center></td>
+<td><center>-</center></td>
+</tr>
+<tr>
+<td><center>black</center></td>
+<td><center>Loss Of Pay</center></td>
+<td><center>-</center></td>
+</tr>
+</table>
+</div>
+
+<h2 style="text-align:center;">ATTENDANCE INFO</h2>
+<div id='calendar'></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    let calendarEl = document.getElementById('calendar');
+    let calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        selectable: true,
+        events: 'fetch_attendance.php', // fetch attendance from DB
+        dateClick: function(info) {
+
+    let status = prompt("Enter Status (Present, Absent, Casual Leave, OnDuty, Holiday, Invalid Swipe):");
+    let validStatuses = ['Present', 'Absent', 'Casual Leave', 'OnDuty', 'Holiday', 'Invalid Swipe'];
+
+	if (!validStatuses.includes(status)) {
+   	 alert("Invalid status entered.");
+    	 return;
+	}
+
+            axios.post('submit_attendance.php', {
+                
+                date: info.dateStr,
+                status: status
+            }).then(() => {
+                alert("Attendance saved!");
+                calendar.refetchEvents();
+            });
+        }
+    });
+    calendar.render();
+});
+</script>
+
+
+</body
+</html>
